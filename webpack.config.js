@@ -7,81 +7,97 @@ var OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 var TerserJSPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-  resolve: {
-    modules: ['node_modules'],
-    alias: {
-      images: path.join(__dirname, 'src/images'),
-      fonts: path.join(__dirname, 'src/fonts')
-    }
-  },
-  optimization: {
-    minimizer: [
-      new TerserJSPlugin({}),
-      new OptimizeCSSAssetsPlugin({})
+    devServer: {
+        writeToDisk: true
+    },
+    resolve: {
+        modules: ['node_modules'],
+        alias: {
+            images: path.join(__dirname, 'src/images'),
+            fonts: path.join(__dirname, 'src/fonts')
+        }
+    },
+    optimization: {
+        minimizer: [
+            new TerserJSPlugin({}),
+            new OptimizeCSSAssetsPlugin({})
+        ],
+    },
+    entry: [
+        './src/js/index.js',
+        './src/scss/main.scss'
     ],
-  },
-  entry: [
-    './src/js/index.js',
-    './src/scss/main.scss'
-  ],
-  plugins: [
-    new CleanWebpackPlugin(),
-    new HtmlWebpackPlugin({
-      title: 'Index',
-      filename: 'index.html',
-      template: 'src/templates/index.html'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Home Page',
-      filename: 'home_page.html',
-      template: 'src/templates/home_page.html'
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'styles.min.css'
-    })
-  ],
-  output: {
-    filename: 'main.min.js',
-    path: path.resolve(__dirname, 'dist')
-  },
-  module: {
-    rules: [
-      {
-        test: /\.(sa|sc)ss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          'sass-loader'
-        ]
-      },
-      {
-        test: /\.(png|jpe?g|gif|svg)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-                outputPath: 'images'
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Index',
+            filename: 'index.html',
+            template: 'src/templates/index.html'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Home Page',
+            filename: 'home_page.html',
+            template: 'src/templates/home_page.html'
+        }),
+        new HtmlWebpackPlugin({
+            title: 'Why Us',
+            filename: 'why_us.html',
+            template: 'src/templates/why_us.html'
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'styles.min.css'
+        })
+    ],
+    output: {
+        filename: 'main.min.js',
+        path: path.resolve(__dirname, 'dist')
+    },
+    module: {
+        rules: [
+            {
+                test: /\.(sa|sc)ss$/,
+                use: [
+                    MiniCssExtractPlugin.loader,
+                    'css-loader',
+                    'postcss-loader',
+                    'sass-loader'
+                ]
+            },
+            {
+                test: /\.(png|jpe?g|gif|svg)$/i,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'images',
+                            esModule: false
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(woff|woff2|ttf|otf|eot)$/,
+                use: [
+                    {
+                        loader: 'file-loader',
+                        options: {
+                            outputPath: 'fonts'
+                        }
+                    }
+                ]
+            },
+            {
+                test: /\.(html)$/,
+                use: {
+                    loader: 'html-loader'
+                }
             }
-          }
         ]
-      },
-      {
-        test: /\.(woff|woff2|ttf|otf|eot)$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              outputPath: 'fonts'
-            }
-          }
-        ]
-      }
-    ]
-  },
-  optimization: {
-    splitChunks: {
-      chunks: 'all'
-    }
-  },
-  devtool: 'inline-source-map'
+    },
+    optimization: {
+        splitChunks: {
+            chunks: 'all'
+        }
+    },
+    devtool: 'inline-source-map'
 };
