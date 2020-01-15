@@ -1,8 +1,13 @@
-.background-fixed{
-  background-attachment: fixed;
+html, body {
+  margin: 0;
 }
-.background-fullwidth{
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }

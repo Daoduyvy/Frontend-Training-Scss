@@ -1,6 +1,31 @@
-.text-center{
+.text-center {
   text-align: center;
 }
-.align-items-center{
+
+.align-items-center {
   align-items: center;
+}
+
+.clearfix {
+  &:after {
+    display: table;
+    content: '';
+    clear: both;
+  }
+}
+
+.background-fixed {
+  background-attachment: fixed;
+}
+
+.background-fullwidth {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.space-50{
+  height: 50px;
+}
+.padding-100{
+  padding: 100px 0;
 }
