@@ -1,0 +1,45 @@
+.slide {
+  background-color: $primary;
+  font-family: $font-lato;
+  z-index: 0;
+  height: 75vh;
+  position: relative;
+
+  align-items: center;
+
+  &__content {
+    margin-top: 25vh;
+    width: 50%;
+  }
+
+  .phone {
+    width: 50%;
+    float: right;
+    overflow: hidden;
+
+    &__img {
+      margin-top: 15vh;
+      left: 55%;
+      position: absolute;
+      z-index: 1;
+      max-width: 400px;
+    }
+  }
+
+  &__succeed {
+    margin: 0;
+    font-size: 90px;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  &::after {
+    content: "";
+    bottom: 0;
+    position: absolute;
+    z-index: 0;
+    border-top: 20vh solid #00cdcd;
+    border-right: 100vw solid #ffffff;
+  }
+
+}

@@ -39,11 +39,6 @@ module.exports = {
             filename: 'home_page.html',
             template: 'src/templates/home_page.html'
         }),
-        new HtmlWebpackPlugin({
-            title: 'Why Us',
-            filename: 'why_us.html',
-            template: 'src/templates/why_us.html'
-        }),
         new MiniCssExtractPlugin({
             filename: 'styles.min.css'
         })
