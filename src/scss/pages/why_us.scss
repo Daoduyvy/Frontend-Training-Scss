@@ -1,0 +1,45 @@
+.why-us {
+  background-image: url('~images/gray-bg.jpg');
+
+  .why-us-row {
+    justify-content: center;
+    display: flex;
+
+    > .why-us-image {
+      display: inline-block;
+      height: 565px;
+      width: 570px;
+      vertical-align: top;
+    }
+
+    > .why-us-content {
+      display: inline-block;
+      height: 565px;
+      width: 570px;
+      vertical-align: top;
+
+      > .why-us-title {
+        color: $color-1;
+        font-size: 40px;
+        font-weight: 900;
+      }
+
+      > .why-row {
+        display: flex;
+
+        > .why-us-icon {
+          display: inline-block;
+          width: 255px;
+          margin-right: 20px;
+
+          > .fas {
+            font-size: 35px;
+            color: $primary;
+          }
+        }
+      }
+
+    }
+  }
+}
+
